@@ -1,0 +1,19 @@
+<div>
+    <h1>Các đường dẫn</h1>
+    <button mat-raised-button [routerLink]="'/kd-admin'">Trang admin Khởi động</button>
+    <button mat-raised-button [routerLink]="'/vd-admin'">Trang admin Về Đích</button>
+    <button mat-raised-button [routerLink]="'/kd-sc'">Trang stream Khởi động</button>
+    <button mat-raised-button [routerLink]="'/vd-sc-question-timer'">Trang stream Về Đích</button>
+    <button mat-raised-button [routerLink]="'/vd-sc-question-bar'">Trang stream Thanh Chọn Câu Hỏi</button>
+    <button mat-raised-button [routerLink]="'/diem-so'">Trang hiển thị điểm</button>
+    <mat-progress-spinner mode="indeterminate" *ngIf="wait === true"></mat-progress-spinner>
+    <div *ngIf="wait === false">
+        <div *ngIf="auth.user$ | async as user; else login">
+            <button mat-raised-button class="button" (click)="auth.signOut()">Sign Out</button>
+        </div>
+        <ng-template #login>
+            <button mat-raised-button class="button" (click)="auth.googleSignIn()">Login With Google</button>
+        </ng-template>
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": "dist/htvhwebapp",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "auth": {
+      "port": 6969
+    },
+    "functions": {
+      "port": 6970
+    },
+    "firestore": {
+      "port": 6971
+    },
+    "hosting": {
+      "port": 6972
+    },
+    "ui": {
+      "enabled": true,
+      "port": 5000
+    }
+  }
+}

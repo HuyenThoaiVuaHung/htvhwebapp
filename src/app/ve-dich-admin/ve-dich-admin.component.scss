@@ -1,0 +1,53 @@
+.padding {
+    margin: 10px;
+}
+.row:hover{
+    background-color: whitesmoke;
+  }
+  .highlight {
+    background-color: #dbdbdb !important;
+  }
+  .mat-column-name {
+    padding-left: 16px;
+    padding-right: 200px;
+  }
+  .mat-column-stt {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mat-column-class {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mat-column-points {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mat-column-question {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mat-column-id {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .mat-column-answer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mat-column-points {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mat-column-propertyId {
+    font-size: 10px;
+  }
+
+  .tablediv {
+    display: flex;
+    border:slategray 2px;
+    overflow: scroll;
+    height: max-content;
+    height: auto;
+    padding: 10px;
+  }

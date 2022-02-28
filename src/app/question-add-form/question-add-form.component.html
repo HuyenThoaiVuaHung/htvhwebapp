@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Thêm/Sửa câu hỏi</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field class="inputForm">
+      <input matInput placeholder="Câu hỏi" [(ngModel)]="data.question">
+    </mat-form-field>
+    <div>
+        <mat-form-field class="inputForm">
+            <input matInput placeholder="Đáp án" [(ngModel)]="data.answer">
+        </mat-form-field>
+        <mat-form-field class="inputForm">
+            <mat-select [(value)]="data.points">
+              <mat-option value="10">10</mat-option>
+              <mat-option value="20">20</mat-option>
+              <mat-option value="30">30</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+  </div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+</div>

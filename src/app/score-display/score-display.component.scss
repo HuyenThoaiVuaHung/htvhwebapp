@@ -1,0 +1,49 @@
+.score-box {
+    
+    height: 70vh;
+    border: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    border-radius: 0px;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(to right, goldenrod, gold);
+  }
+  .name-box {
+    
+    height: 29vh;
+    border: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgb(60, 60, 60);
+    border-radius: 0px;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(to right, rgb(38, 38, 38), rgb(55, 55, 55));
+    
+  }
+  .name-text{
+      font-size: 100px;
+      font-weight: 2px;
+      text-transform: uppercase;
+      color:gold;
+  }
+  .score-text {
+      font-size: 200px;
+      font-weight: bolder;
+  }

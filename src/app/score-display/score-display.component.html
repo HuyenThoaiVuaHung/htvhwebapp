@@ -1,0 +1,24 @@
+<div *ngIf="state === 'not-auth'">
+    <mat-form-field>
+        <input matInput placeholder="NHẬP STT NGƯỜI CHƠI" [(ngModel)]="PID">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="NHẬP TRẬN ĐẤU" [(ngModel)]="matchID">
+    </mat-form-field>
+    <button mat-icon-button (click)="login()">
+        <mat-icon>arrow_forward</mat-icon>
+    </button>
+</div>
+
+<div #container *ngIf="state === 'auth'">
+    <div class="name-box">
+        <div class="text-box">
+            <p class="name-text">{{curPlayer.name + " " + curPlayer.class}}</p>
+        </div>
+
+    </div>
+    <div class="score-box"> 
+        <p class="score-text">{{curPlayer.points}}</p>
+
+    </div>
+</div>

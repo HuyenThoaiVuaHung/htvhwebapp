@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Thêm thí sinh</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field>
+        <input matInput placeholder="SBD" [(ngModel)]="data.propertyId">
+    </mat-form-field>
+    <mat-form-field class="inputForm">
+      <input matInput placeholder="Tên thí sinh" [(ngModel)]="data.name">
+    </mat-form-field>
+    <div>
+        <mat-form-field class="inputForm">
+            <input matInput placeholder="Lớp" [(ngModel)]="data.class">
+        </mat-form-field>
+        <mat-form-field class="inputForm">
+            <input matInput placeholder="Số điểm hiện tại" [(ngModel)]="data.points">
+        </mat-form-field >
+    </div>
+  </div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+</div>

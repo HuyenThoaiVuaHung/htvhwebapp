@@ -1,0 +1,148 @@
+<div *ngIf="state === 'not-auth'">
+    <mat-form-field >
+        <input matInput type="password" placeholder="NHẬP ID ADMIN" [(ngModel)]="adminPassword">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="NHẬP ID TRẬN ĐẤU" [(ngModel)]="matchID">
+    </mat-form-field>
+    <button mat-icon-button (click)='login()'>
+        <mat-icon aria-hidden="false">arrow_forward</mat-icon>
+    </button>
+</div>
+
+<mat-grid-list cols="2"*ngIf="state === 'auth'">
+    <mat-grid-tile style="display: inline;">
+        <div>
+            <table mat-table [dataSource]="players" class="table">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>SBD</th>
+                    <td mat-cell *matCellDef="let player">{{player.propertyId}}</td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Tên</th>
+                    <td mat-cell *matCellDef="let player">{{player.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="class">
+                    <th mat-header-cell *matHeaderCellDef>Lớp</th>
+                    <td mat-cell *matCellDef="let player">{{player.class}}</td>
+                </ng-container>
+                <ng-container matColumnDef="points">
+                    <th mat-header-cell *matHeaderCellDef>Số Điểm</th>
+                    <td mat-cell *matCellDef="let player">{{player.points}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsPlayers"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsPlayers;"
+                    (click)="onPlayerRowClicked(row)"
+                    (dblclick)="onPlayerDoubleClick(row)"
+                    class="row"
+                    [ngClass]="{'highlight': selectedRow === row}"
+                ></tr>
+            </table>
+            <div class="buttons">
+                <button mat-icon-button color="primary" aria-label="Add" (click)="addNewPlayer()">
+                    <mat-icon>add</mat-icon>
+                </button> 
+            </div>
+        </div>    
+        <!---->
+         
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <h1>LƯỢT: {{selectedRow.name}} STT {{selectedRow.propertyId}}</h1>
+        </div>
+        <div>
+            <button mat-stroked-button  (click)="decr(30)">-30</button>
+            <button mat-stroked-button (click)="decr(20)">-20</button>
+            <button mat-stroked-button (click)="decr(15)">-15</button>
+            <button mat-stroked-button (click)="decr(10)">-10</button>
+            <button mat-stroked-button (click)="decr(5)">-5</button>
+            <br>
+            <button mat-stroked-button (click)="incr(10)">+10</button>
+            <button mat-stroked-button (click)="incr(20)">+20</button>
+            <button mat-stroked-button (click)="incr(30)">+30</button>
+            <button mat-stroked-button (click)="incr(40)">+40</button>
+            <button mat-stroked-button (click)="incr(60)">+60</button>
+            <button mat-stroked-button (click)="incr(80)">+80</button>
+            <div style="padding: 10px;">
+                <button mat-raised-button style="background-color: greenyellow; color: white;" (click)="startTimer()" class="padding">Bắt đầu thời gian</button>
+                <br>
+                <button mat-raised-button style="background-color: red; color: aliceblue;" (click)="pauseTimer()" class="padding">Dừng/Tiếp tục Thời Gian</button>
+                <br>
+                <mat-form-field class="padding">
+                    <input matInput [(ngModel)]="resetTime" placeholder="Reset Thời gian về (s):">
+                </mat-form-field>
+                <button mat-raised-button style="background-color: red; color:aliceblue;" (click)="resetTimer()" class="padding">Reset</button>
+                <br>
+                <mat-form-field class="padding">
+                    <input matInput [(ngModel)]="maxTime" placeholder="Time (s)">
+                </mat-form-field>
+                <button mat-raised-button style="background-color: green; color: white;" (click)="updateInterval()" class="padding">Cập nhật thời gian</button>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile style="display: grid;">
+        <mat-checkbox [(ngModel)]="checkboxes[0]" (change)="toggle(0)">10-1</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[1]" (change)="toggle(1)">10-2</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[2]" (change)="toggle(2)">10-3</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[3]" (change)="toggle(3)">20-1</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[4]" (change)="toggle(4)">20-2</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[5]" (change)="toggle(5)">20-3</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[6]" (change)="toggle(6)">30-1</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[7]" (change)="toggle(7)">30-2</mat-checkbox> 
+        <br>
+        <mat-checkbox [(ngModel)]="checkboxes[8]" (change)="toggle(8)">30-3</mat-checkbox>
+        <button mat-raised-button style="background-color: yellow; color: black;" (click)="resetBar()">RESET</button>
+    </mat-grid-tile>
+    <mat-grid-tile class="tablediv">
+        <div class="tablediv">
+            <table mat-table [dataSource]="questions" class="table">
+                <ng-container matColumnDef="propertyId">
+                    <th mat-header-cell *matHeaderCellDef>PrID</th>
+                    <td mat-cell *matCellDef="let questions">{{questions.propertyId}}</td>
+                </ng-container>
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>STT</th>
+                    <td mat-cell *matCellDef="let questions">{{questions.randId}}</td>
+                </ng-container>
+                <ng-container matColumnDef="question">
+                    <th mat-header-cell *matHeaderCellDef>Câu Hỏi</th>
+                    <td mat-cell *matCellDef="let questions">{{questions.question}}</td>
+                </ng-container>
+                <ng-container matColumnDef="answer">
+                    <th mat-header-cell *matHeaderCellDef>Trả lời</th>
+                    <td mat-cell *matCellDef="let questions">{{questions.answer}}</td>
+                </ng-container>
+                <ng-container matColumnDef="points">
+                    <th mat-header-cell *matHeaderCellDef>Số điểm</th>
+                    <td mat-cell *matCellDef="let questions">{{questions.points}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsQuestions"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsQuestions;"
+                    (click)="onQuestionRowClicked(row)"
+                    (dblclick)="onQuestionDoubleClick(row)"
+                    class="row"
+                    [ngClass]="{'highlight': selectedQuestionRow === row}"
+                ></tr>
+            </table>
+            <div class="buttons">
+                <button mat-icon-button color="primary" aria-label="Add" (click)="addNewQuestion()">
+                    <mat-icon>add</mat-icon>
+                </button> 
+                <button mat-icon-button color="primary" aria-label="Add" (click)="removeQuestion()">
+                    <mat-icon>highlight_off</mat-icon>
+                </button> 
+            </div>
+            <h1>Selected Question: {{this.selectedQuestionRow.question}}</h1> <br>
+            <h1>Answer: {{this.selectedQuestionRow.answer}}</h1>
+        </div>   
+    </mat-grid-tile>
+  </mat-grid-list>
+

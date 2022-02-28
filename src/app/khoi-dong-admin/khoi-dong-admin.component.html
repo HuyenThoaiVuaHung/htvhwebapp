@@ -1,0 +1,81 @@
+<div *ngIf="state === 'not-auth'">
+    <mat-form-field >
+        <input type="password" matInput placeholder="NHẬP ID ADMIN" [(ngModel)]="adminPassword">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="NHẬP ID TRẬN ĐẤU" [(ngModel)]="matchID">
+    </mat-form-field>
+    <button mat-icon-button (click)='login()'>
+        <mat-icon aria-hidden="false">arrow_forward</mat-icon>
+    </button>
+</div>
+
+
+<mat-grid-list cols="2"*ngIf="state === 'auth'">
+    <mat-grid-tile>
+        <div>
+            <table mat-table [dataSource]="players" class="table">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>SBD</th>
+                    <td mat-cell *matCellDef="let player">{{player.propertyId}}</td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Tên</th>
+                    <td mat-cell *matCellDef="let player">{{player.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="class">
+                    <th mat-header-cell *matHeaderCellDef>Lớp</th>
+                    <td mat-cell *matCellDef="let player">{{player.class}}</td>
+                </ng-container>
+                <ng-container matColumnDef="points">
+                    <th mat-header-cell *matHeaderCellDef>Số Điểm</th>
+                    <td mat-cell *matCellDef="let player">{{player.points}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                    (click)="onRowClicked(row)"
+                    (dblclick)="onDoubleClick(row)"
+                    class="row"
+                    [ngClass]="{'highlight': selectedRow === row}"
+                ></tr>
+            </table>
+            <div class="buttons">
+                <button mat-icon-button color="primary" aria-label="Add" (click)="addNewPlayer()">
+                    <mat-icon>add</mat-icon>
+                </button> 
+            </div>
+        </div>        
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <h1>LƯỢT: {{selectedRow.name}} STT {{selectedRow.propertyId}}</h1>
+        </div>
+        <div>
+            <button mat-stroked-button  (click)="decr(30)">-30</button>
+            <button mat-stroked-button (click)="decr(20)">-20</button>
+            <button mat-stroked-button (click)="decr(15)">-15</button>
+            <button mat-stroked-button (click)="decr(10)">-10</button>
+            <button mat-stroked-button (click)="decr(5)">-5</button>
+            <br>
+            <button mat-stroked-button (click)="incr(10)">+10</button>
+            <button mat-stroked-button (click)="incr(20)">+20</button>
+            <button mat-stroked-button (click)="incr(30)">+30</button>
+            <button mat-stroked-button (click)="incr(40)">+40</button>
+            <button mat-stroked-button (click)="incr(60)">+60</button>
+            <button mat-stroked-button (click)="incr(80)">+80</button>
+            <div style="padding: 10px;">
+                <button mat-raised-button style="background-color: greenyellow; color: white;" (click)="startTimer()" class="padding">Bắt đầu thời gian</button>
+                <br>
+                <button mat-raised-button style="background-color: red; color: aliceblue;" (click)="pauseTimer()" class="padding">Dừng/Tiếp tục Thời Gian</button>
+                <br>
+                <mat-form-field class="padding">
+                    <input matInput [(ngModel)]="resetTime" placeholder="Reset Thời gian về (s):">
+                </mat-form-field>
+                <button mat-raised-button style="background-color: red; color:aliceblue;" (click)="resetTimer()" class="padding">Reset</button>
+                <br>
+                <button mat-raised-button style="background-color: green; color: white;" class="padding">Cập nhật thời gian</button>
+            </div>
+        </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>

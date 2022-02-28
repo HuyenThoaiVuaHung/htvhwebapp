@@ -1,0 +1,114 @@
+.containerbox {
+    width: calc(80% - 20px);
+    height: 20vh;
+    border: solid 3px goldenrod;
+    color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    font-family: roboto;
+    font-weight: normal;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background: rgb(60, 60, 60);
+    border-radius: 0px;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(to right, rgb(38, 38, 38), rgb(55, 55, 55));
+    
+  }
+.tabs {
+    float: left;
+}
+.container {
+    width: 80%;
+    overflow: hidden;
+}
+.black-text {
+    color:black;
+}
+.round-borders {
+    border-radius: 10px;
+}
+.score-box {
+    width: 200px;
+    height: 200px;
+    border: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(to right, goldenrod, gold);
+    font-weight: bolder;
+    font-size: 80px;
+  }
+  .highlighted-button {
+    border: solid 0px gold !important;
+    color: black !important;
+    background-color: gold !important; 
+    width: 20.12%;
+    height: 5vh;
+    background-image: linear-gradient(to right, rgb(255, 196, 0), rgb(255, 217, 0)) !important;
+    font-size: x-large;
+    font-weight: bolder;
+  }
+  .buttons {
+      border: solid 3px gold;
+      color: gold;
+      background-color: black;
+      width: 20.12%;
+      height: 5vh;
+      background-image: linear-gradient(to right, rgb(38, 38, 38), rgb(55, 55, 55));
+      font-size: x-large;
+      font-weight: normal;
+  }
+  .timer-icon {
+      float: left;
+      padding-right: 10px;
+  }
+  .progress-bar-box {
+    width: 80%;
+    height: 5vh;
+    border: solid 3px goldenrod;
+    color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgb(60, 60, 60);
+    border-radius: 0px;
+    position: relative;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(to right, rgb(38, 38, 38), rgb(55, 55, 55));
+      z-index: 2;
+  }
+ ::ng-deep mat-progress-bar {
+      height: 20px;
+      width: 90%;
+      border-radius: 10px;
+  }
+  mat-progress-bar {
+    height: 20px;
+    width: 90%;
+    border-radius: 10px;
+}
+  

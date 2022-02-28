@@ -1,0 +1,33 @@
+<div *ngIf="state === 'not-auth'">
+    <mat-form-field>
+        <input matInput [(ngModel)]='matchID'>
+    </mat-form-field>
+    <button mat-icon-button (click)="login()">
+        <mat-icon>arrow_forward</mat-icon>
+    </button>
+</div>
+<div *ngIf="state === 'auth'">
+    <button mat-raised-button class="buttons" [ngClass]="{'highlighted-button': selectedPlayer === 1}">
+        {{players[0].name + "  (" + players[0].points + ")"}}
+    </button>
+    <button mat-raised-button class="buttons" [ngClass]="{'highlighted-button': selectedPlayer === 2}">
+        {{players[1].name + "  (" + players[1].points + ")"}}
+    </button>
+    <button mat-raised-button class="buttons" [ngClass]="{'highlighted-button': selectedPlayer === 3}">
+        {{players[2].name + "  (" + players[2].points + ")"}}
+    </button>
+    <button mat-raised-button class="buttons" [ngClass]="{'highlighted-button': selectedPlayer === 4}">
+        {{players[3].name + "  (" + players[3].points + ")"}}
+    </button>
+    <div class="containerbox">
+        {{currentQuestion}}
+    </div>
+    
+    <div class="progress-bar-box" cdkDrag cdkDragLockAxis="y">
+        <mat-icon class="timer-icon">timer</mat-icon>
+        <mat-progress-bar color="accent" [mode]="timerMode" max [value]="currentTime"></mat-progress-bar>
+    </div>
+    <div class="score-box" cdkDrag> 
+        <p class="score-text">{{players[selectedPlayer - 1].points}}</p>
+    </div>
+</div>
